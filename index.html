@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<title>MotoPark NZ</title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+		<link rel="manifest" href="favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+		
+		<meta name="theme-color" content="#ffffff">
+		<script src="init.js"></script>
+		<script src="data.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="panel-top mobile-only">
+				<div class="circle-button" onclick="openSearchTab()">
+					<img class="search-icon" id="search-icon" src="icons/search.png" alt="Search icon">
+					<img class="close-icon" id="search-icon-close" src="icons/close.png" alt="Close icon">
+				</div>
+				<div class="logo-top-cont">
+					<img class="logo-top" src="logo-long.png" onclick="resetPage()" alt="MotoPark NZ logo"/>
+					<div class="motto-top">
+						We currently know about <span class="total-parks-number">0</span> parks
+					</div>
+				</div>
+				<div class="circle-button" onclick="openLocationTab()">
+					<img class="location-icon" id="location-icon" src="icons/location.png" alt="Location icon">
+					<img class="close-icon" id="location-icon-close" src="icons/close.png" alt="Close icon">
+				</div>
+			</div>
+			<div class="inner-container">
+				<div class="panel-left">
+					<div class="logo-search-cont">
+						<img class="logo" src="logo.png" onclick="resetPage()" alt="MotoPark NZ logo"/>
+						<div class="motto">
+							MotoPark NZ currently knows about <span class="total-parks-number">0</span> motorcycle parks
+						</div>
+						<div>
+							Where are you riding today?
+						</div>
+						<input id="autocomplete" class="location-search" placeholder="Enter a destination" type="text"/>
+						<div class="clear-phrase" id="clear-phrase" onclick="clearSearchFilterButton()">
+							[X] Clear Search Results
+						</div>
+					</div>
+					<div class="results" id="results">
+						&nbsp;
+					</div>
+					<div class="quick-locations">
+						<span>Quick Location Links</span>
+						<div class="location-link-cont">
+							<div class="location-link auckland" onclick="changeLocation('Auckland')">
+								<div class="location-heading">
+									Auckland
+								</div>
+								<span class="auk-parks-number">0</span> Parks
+							</div>
+							<div class="location-link wellington" onclick="changeLocation('Wellington')">
+								<div class="location-heading">
+									Wellington
+								</div>
+								<span class="wlg-parks-number">0</span> Parks
+							</div>
+							<div class="location-link christchurch" onclick="changeLocation('Christchurch')">
+								<div class="location-heading">
+									Christchurch
+								</div>
+								<span class="chc-parks-number">0</span> Parks
+							</div>
+							<div class="location-link hamilton" onclick="changeLocation('Hamilton')">
+								<div class="location-heading">
+									Hamilton
+								</div>
+								<span class="ham-parks-number">0</span> Parks
+							</div>
+							<div class="location-link dunedin" onclick="changeLocation('Dunedin')">
+								<div class="location-heading">
+									Dunedin
+								</div>
+								<span class="dnd-parks-number">0</span> Parks
+							</div>
+							<div class="location-link hastings" onclick="changeLocation('Hastings')">
+								<div class="location-heading">
+									Hastings
+								</div>
+								<span class="has-parks-number">0</span> Parks
+							</div>
+							<div class="location-link napier" onclick="changeLocation('Napier')">
+								<div class="location-heading">
+									Napier
+								</div>
+								<span class="nap-parks-number">0</span> Parks
+							</div>
+							<div class="location-link whangarei" onclick="changeLocation('Whangarei')">
+								<div class="location-heading">
+									Whangarei
+								</div>
+								<span class="whg-parks-number">0</span> Parks
+							</div>
+							<div class="location-link taupo" onclick="changeLocation('Taupo')">
+								<div class="location-heading">
+									Taupo
+								</div>
+								<span class="tpo-parks-number">0</span> Parks
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="map">
+					&nbsp;
+				</div>
+				<div class="panel-right">
+					<div class="location-link-cont">
+						<div class="location-link gps" onclick="changeLocationGPS()">
+							<div class="location-heading">
+								Use my GPS Location
+							</div>
+						</div>
+						<div class="location-link auckland" onclick="changeLocation('Auckland')">
+							<div class="location-heading">
+								Auckland
+							</div>
+							<span class="auk-parks-number">0</span> Parks
+						</div>
+						<div class="location-link wellington" onclick="changeLocation('Wellington')">
+							<div class="location-heading">
+								Wellington
+							</div>
+							<span class="wlg-parks-number">0</span> Parks
+						</div>
+						<div class="location-link christchurch" onclick="changeLocation('Christchurch')">
+							<div class="location-heading">
+								Christchurch
+							</div>
+							<span class="chc-parks-number">0</span> Parks
+						</div>
+						<div class="location-link hamilton" onclick="changeLocation('Hamilton')">
+							<div class="location-heading">
+								Hamilton
+							</div>
+							<span class="ham-parks-number">0</span> Parks
+						</div>
+						<div class="location-link dunedin" onclick="changeLocation('Dunedin')">
+							<div class="location-heading">
+								Dunedin
+							</div>
+							<span class="dnd-parks-number">0</span> Parks
+						</div>
+						<div class="location-link hastings" onclick="changeLocation('Hastings')">
+							<div class="location-heading">
+								Hastings
+							</div>
+							<span class="has-parks-number">0</span> Parks
+						</div>
+						<div class="location-link napier" onclick="changeLocation('Napier')">
+							<div class="location-heading">
+								Napier
+							</div>
+							<span class="nap-parks-number">0</span> Parks
+						</div>
+						<div class="location-link whangarei" onclick="changeLocation('Whangarei')">
+							<div class="location-heading">
+								Whangarei
+							</div>
+							<span class="whg-parks-number">0</span> Parks
+						</div>
+						<div class="location-link taupo" onclick="changeLocation('Taupo')">
+							<div class="location-heading">
+								Taupo
+							</div>
+							<span class="tpo-parks-number">0</span> Parks
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxqG3Q_65uYcc7-Z9OBdhE3k62QNUnNTg&callback=initMap&libraries=places"></script>
+	</body>
+</html>
