@@ -35,7 +35,7 @@ var locations = [
 	["HAM-21",	"The Base (Heathcotes)",-37.748509, 	175.231397,		4,		"Inside The Base (Outside Heathcotes)", true],
 	["HAM-22",	"The Base (Mitre 10)",	-37.746544, 	175.229002,		4,		"Inside The Base (Outside Mitre 10)", true],
 	["HAM-23",	"Chartwell Shopping",	-37.751505, 	175.279288,		'??',	"Inside Chartwell Shopping Centre", true],
-	["HAM-23",	"136 Hillcrest Rd",		-37.788682, 	175.318423,		'??',	"University of Waikato", true],
+	["HAM-23",	"136 Hillcrest Rd",		-37.788682, 	175.318423,		7,	"University of Waikato", true],
 	
 	["WHG-01",	"16 Rathbone St",		-35.724273, 	174.321299,		6,		""],
 	
