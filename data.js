@@ -38,6 +38,7 @@ var locations = [
 	["HAM-23",	"University of Waikato",-37.788682, 	175.318423,		7,		"University of Waikato", true],
 	["HAM-24",	"Hamilton Transport Centre",	-37.786343, 	175.278103,		8,		"Inside the Hamilton Transport Center", true],
 	["HAM-25",	"The Base (KMart)",		-37.747298,		175.2350213,	6,		"Inside The Base (KMart)", true],
+	["HAM-26",	"Wintec (Rotokauri)",	-37.761106, 	175.2287320,	13,		"Wintec Students Only", true],
 	
 	
 	["WHG-01",	"16 Rathbone St",		-35.724273, 	174.321299,		6,		""],
