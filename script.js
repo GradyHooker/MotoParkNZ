@@ -26,6 +26,9 @@ function initMap() {
 		if (point[7] != null) {
 			icon = "icons/prescaled/marker-" + point[7] + ".png";
 		} 
+		if (point[5] == "P60") {
+			icon = "icons/prescaled/marker-p60.png";
+		} 
 		var marker = new google.maps.Marker({
 			position : {
 				lat : point[2],
