@@ -23,6 +23,9 @@ function initMap() {
 		} else {
 			icon = "icons/prescaled/marker.png";
 		}
+		if (point[7] != null) {
+			icon = "icons/prescaled/marker-" + point[7] + ".png";
+		} 
 		var marker = new google.maps.Marker({
 			position : {
 				lat : point[2],
