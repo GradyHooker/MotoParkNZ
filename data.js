@@ -8,7 +8,9 @@ var cities = [
 	["Hastings",	"HAS",		-39.642048, 	176.843338,		16],
 	["Wellington",	"WLG",		-41.284681, 	174.779547,		15],
 	["Christchurch","CHC",		-43.531983, 	172.636278,		15],
-	["Dunedin",		"DND",		-45.874160,		170.507060,		15]
+	["Dunedin",		"DND",		-45.874160,		170.507060,		15],
+	["New Plymouth","PLY",		-39.057316,		174.074324,		15],
+	["Nelson",		"NEL",		-41.272537, 	173.284563,		15]
 ];
 var locations = [
 	//code		StreetAddress			Latitude		Longitude		#		AdditionalInfo
@@ -208,5 +210,22 @@ var locations = [
 	["AUK-26",	"McCrae Way Car Park",				-36.908891, 	174.683296,		'??',	"McCrae Way Car Park (Motorcycle and scooter parking is free in dedicated areas)", true, "at"],
 	["AUK-27",	"The Avenue, Takapuna",				-36.785706, 	174.754149,		8,		""],
 	["AUK-28",	"Upper Queen Street Car Park",		-36.858756, 	174.761164,		'??',	"Upper Queen Street Car Park (Motorcycle and scooter parking is free in dedicated areas)", true, "at"],
+	
+	["PLY-01",	"59 Gill St",						-39.055779, 	174.077095,		4,		""],
+	["PLY-02",	"133 Devon St E",					-39.056320, 	174.078814,		3,		""],
+	["PLY-03",	"86 Devon St E",					-39.057072, 	174.076587,		2,		""],
+	["PLY-04",	"3 Devon St W",						-39.057809, 	174.074034,		4,		""],
+	["PLY-05",	"54 Egmont St",						-39.058258, 	174.071601,		3,		""],
+	["PLY-06",	"116 Devon St W",					-39.058688, 	174.070817,		3,		""],
+	["PLY-07",	"11 Robe St",						-39.059096, 	174.070806,		3,		""],
+
+	["NEL-01",	"24/28 Halifax St E",				-41.270815, 	173.283300,		3,		""],
+	["NEL-02",	"15/11 Wakatu Ln",					-41.271936,		173.283010,		4,		"Both sides of the driveway (2 on each)"],
+	["NEL-03",	"58 Bridge St",						-41.272572, 	173.283626,		4,		""],
+	["NEL-04",	"44 Bridge St",						-41.272566, 	173.283157,		3,		""],
+	["NEL-05",	"86 Bridge St",						-41.272598, 	173.284926,		3,		""],
+	["NEL-06",	"3 Church St",						-41.274404, 	173.282959,		3,		""],
+	["NEL-07",	"209 Hardy St",						-41.274267,		173.284784,		4,		""],
+	["NEL-08",	"241/245 Hardy St",					-41.274304, 	173.285523,		5,		""],
 
   ];

@@ -88,6 +88,8 @@ function initMap() {
 	var count_nap = 0;
 	var count_whg = 0;
 	var count_tpo = 0;
+	var count_ply = 0;
+	var count_nel = 0;
 
 	for (var i = 0; i < locations.length; i++) {
 		if (locations[i][4] != "??") {
@@ -119,6 +121,12 @@ function initMap() {
 					break;
 				case "TPO":
 					count_tpo += parseInt(locations[i][4]);
+					break;
+				case "PLY":
+					count_ply += parseInt(locations[i][4]);
+					break;
+				case "NEL":
+					count_nel += parseInt(locations[i][4]);
 					break;
 			}
 		}
@@ -153,6 +161,12 @@ function initMap() {
 	
 	document.getElementsByClassName("tpo-parks-number")[0].textContent = count_tpo;
 	document.getElementsByClassName("tpo-parks-number")[1].textContent = count_tpo;
+	
+	document.getElementsByClassName("ply-parks-number")[0].textContent = count_ply;
+	document.getElementsByClassName("ply-parks-number")[1].textContent = count_ply;
+	
+	document.getElementsByClassName("nel-parks-number")[0].textContent = count_nel;
+	document.getElementsByClassName("nel-parks-number")[1].textContent = count_nel;
 }
 
 function changeLocation(loc) {
