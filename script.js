@@ -90,6 +90,7 @@ function initMap() {
 	var count_tpo = 0;
 	var count_ply = 0;
 	var count_nel = 0;
+	var count_inv = 0;
 
 	for (var i = 0; i < locations.length; i++) {
 		if (locations[i][4] != "??") {
@@ -127,6 +128,9 @@ function initMap() {
 					break;
 				case "NEL":
 					count_nel += parseInt(locations[i][4]);
+					break;
+				case "INV":
+					count_inv += parseInt(locations[i][4]);
 					break;
 			}
 		}
@@ -167,6 +171,9 @@ function initMap() {
 	
 	document.getElementsByClassName("nel-parks-number")[0].textContent = count_nel;
 	document.getElementsByClassName("nel-parks-number")[1].textContent = count_nel;
+	
+	document.getElementsByClassName("inv-parks-number")[0].textContent = count_inv;
+	document.getElementsByClassName("inv-parks-number")[1].textContent = count_inv;
 }
 
 function changeLocation(loc) {
