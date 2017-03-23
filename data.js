@@ -12,7 +12,7 @@ var cities = [
 	["New Plymouth","PLY",		-39.057316,		174.074324,		16],
 	["Nelson",		"NEL",		-41.272537, 	173.284563,		16],
 	["Invercargill","INV",		-46.411544, 	168.349681,		16],
-	["Gisborne",	"GIS",		-38.664821, 	178.022733,		16],
+	["Gisborne",	"GIS",		-38.666063, 	178.024371,		16],
 ];
 var locations = [
 	//code		StreetAddress			Latitude		Longitude		#		AdditionalInfo
