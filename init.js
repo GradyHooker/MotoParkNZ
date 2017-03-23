@@ -12,3 +12,5 @@ var spotsLookedAt = 0;
 var countryRestrict = {
 	'country' : 'nz'
 };
+var infos = [];
+var ib;

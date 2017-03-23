@@ -233,6 +233,43 @@ html, body {
 	border-radius: 3px;
 }
 
+.info-cont {
+	width: 250px;
+	font-size: 1.1em;
+	border-radius: 5px;
+}
+
+.info-img-cont img {
+	width: 100%;
+	border-radius: 5px 5px 0 0;
+}
+
+.info-box-details {
+	width: 100%;
+	text-align: center;
+	top: -10px;
+}
+
+.info-box-title {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.info-box-additional {
+	font-style: italic;
+}
+
+.infoBox {
+	background: #dedede;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.infoBox > img {
+	position: absolute !important;
+	right: 0px;	
+}
+
 .auckland {
 	background: linear-gradient(0deg,rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url(cities/auckland.jpg) no-repeat center center;
 	-webkit-background-size: cover;

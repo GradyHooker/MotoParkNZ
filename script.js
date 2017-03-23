@@ -1,9 +1,16 @@
 function initMap() {
+	//Load InfoBox
+	var s = document.createElement("script");
+	s.type = "text/javascript";
+	s.src = "js/infobox/infobox.js";
+	document.getElementsByTagName("HEAD")[0].append(s);
+
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom : 6,
 		streetViewControl : false,
 		minZoom : 5,
 		fullscreenControl : false,
+		clickableIcons : false,
 		center : {
 			lat : -41.15,
 			lng : 172.65
@@ -13,6 +20,23 @@ function initMap() {
 	if (document.getElementById('map').offsetWidth <= 600 || document.getElementById('map').offsetHeight <= 650) {
 		map.setZoom(5);
 	}
+
+	var ibOptions = {
+		disableAutoPan : false,
+		maxWidth : 0,
+		pixelOffset : new google.maps.Size(-125, -42),
+		zIndex : null,
+		alignBottom: true,
+		boxStyle : {
+			padding : "0px 0px 0px 0px",
+			width : "250px",
+		},
+		closeBoxURL: "icons/close_infobox.png",
+		infoBoxClearance : new google.maps.Size(1, 1),
+		isHidden : false,
+		pane : "floatPane",
+		enableEventPropagation : false
+	};
 
 	for (var i = 0; i < locations.length; i++) {
 		var point = locations[i];
@@ -25,10 +49,10 @@ function initMap() {
 		}
 		if (point[7] != null) {
 			icon = "icons/prescaled/marker-" + point[7] + ".png";
-		} 
+		}
 		if (point[5] == "P60") {
 			icon = "icons/prescaled/marker-p60.png";
-		} 
+		}
 		var marker = new google.maps.Marker({
 			position : {
 				lat : point[2],
@@ -37,6 +61,7 @@ function initMap() {
 			label : point[4].toString(),
 			map : map,
 			title : point[1],
+			id : i,
 			icon : {
 				url : icon,
 				size : new google.maps.Size(22 * scale, 32 * scale),
@@ -47,12 +72,23 @@ function initMap() {
 			}
 		});
 		markers[i] = marker;
-		marker.addListener('click', function() {
-			/*map.setCenter({
-			 lat : this.position.lat(),
-			 lng : this.position.lng()
-			 });*/
-		});
+
+		google.maps.event.addListener(marker, 'click', (function(marker) {
+			return function() {
+				map.setZoom(15);
+				map.setCenter({
+					lat : this.position.lat(),
+					lng : this.position.lng()
+				});
+				console.log("hi!");
+				if(ib != null) {
+					ib.close();
+				}
+				ib = new InfoBox(ibOptions);
+				ib.setContent(generateInfoWindow(marker.id));
+				ib.open(map, marker);
+			};
+		})(marker));
 	}
 
 	autocomplete = new google.maps.places.Autocomplete(
@@ -96,84 +132,106 @@ function initMap() {
 		if (locations[i][4] != "??") {
 			count += parseInt(locations[i][4]);
 			switch(locations[i][0].split("-")[0]) {
-				case "AUK":
-					count_auk += parseInt(locations[i][4]);
-					break;
-				case "WLG":
-					count_wlg += parseInt(locations[i][4]);
-					break;
-				case "CHC":
-					count_chc += parseInt(locations[i][4]);
-					break;
-				case "HAM":
-					count_ham += parseInt(locations[i][4]);
-					break;
-				case "DND":
-					count_dnd += parseInt(locations[i][4]);
-					break;
-				case "HAS":
-					count_has += parseInt(locations[i][4]);
-					break;
-				case "NAP":
-					count_nap += parseInt(locations[i][4]);
-					break;
-				case "WHG":
-					count_whg += parseInt(locations[i][4]);
-					break;
-				case "TPO":
-					count_tpo += parseInt(locations[i][4]);
-					break;
-				case "PLY":
-					count_ply += parseInt(locations[i][4]);
-					break;
-				case "NEL":
-					count_nel += parseInt(locations[i][4]);
-					break;
-				case "INV":
-					count_inv += parseInt(locations[i][4]);
-					break;
+			case "AUK":
+				count_auk += parseInt(locations[i][4]);
+				break;
+			case "WLG":
+				count_wlg += parseInt(locations[i][4]);
+				break;
+			case "CHC":
+				count_chc += parseInt(locations[i][4]);
+				break;
+			case "HAM":
+				count_ham += parseInt(locations[i][4]);
+				break;
+			case "DND":
+				count_dnd += parseInt(locations[i][4]);
+				break;
+			case "HAS":
+				count_has += parseInt(locations[i][4]);
+				break;
+			case "NAP":
+				count_nap += parseInt(locations[i][4]);
+				break;
+			case "WHG":
+				count_whg += parseInt(locations[i][4]);
+				break;
+			case "TPO":
+				count_tpo += parseInt(locations[i][4]);
+				break;
+			case "PLY":
+				count_ply += parseInt(locations[i][4]);
+				break;
+			case "NEL":
+				count_nel += parseInt(locations[i][4]);
+				break;
+			case "INV":
+				count_inv += parseInt(locations[i][4]);
+				break;
 			}
 		}
 	}
-	
+
 	document.getElementsByClassName("total-parks-number")[0].textContent = count;
 	document.getElementsByClassName("total-parks-number")[1].textContent = count;
-	
+
 	document.getElementsByClassName("auk-parks-number")[0].textContent = count_auk;
 	document.getElementsByClassName("auk-parks-number")[1].textContent = count_auk;
-	
+
 	document.getElementsByClassName("wlg-parks-number")[0].textContent = count_wlg;
 	document.getElementsByClassName("wlg-parks-number")[1].textContent = count_wlg;
-	
+
 	document.getElementsByClassName("chc-parks-number")[0].textContent = count_chc;
 	document.getElementsByClassName("chc-parks-number")[1].textContent = count_chc;
-	
+
 	document.getElementsByClassName("ham-parks-number")[0].textContent = count_ham;
 	document.getElementsByClassName("ham-parks-number")[1].textContent = count_ham;
-	
+
 	document.getElementsByClassName("dnd-parks-number")[0].textContent = count_dnd;
 	document.getElementsByClassName("dnd-parks-number")[1].textContent = count_dnd;
-	
+
 	document.getElementsByClassName("has-parks-number")[0].textContent = count_has;
 	document.getElementsByClassName("has-parks-number")[1].textContent = count_has;
-	
+
 	document.getElementsByClassName("nap-parks-number")[0].textContent = count_nap;
 	document.getElementsByClassName("nap-parks-number")[1].textContent = count_nap;
-	
+
 	document.getElementsByClassName("whg-parks-number")[0].textContent = count_whg;
 	document.getElementsByClassName("whg-parks-number")[1].textContent = count_whg;
-	
+
 	document.getElementsByClassName("tpo-parks-number")[0].textContent = count_tpo;
 	document.getElementsByClassName("tpo-parks-number")[1].textContent = count_tpo;
-	
+
 	document.getElementsByClassName("ply-parks-number")[0].textContent = count_ply;
 	document.getElementsByClassName("ply-parks-number")[1].textContent = count_ply;
-	
+
 	document.getElementsByClassName("nel-parks-number")[0].textContent = count_nel;
 	document.getElementsByClassName("nel-parks-number")[1].textContent = count_nel;
-	
+
 	document.getElementsByClassName("inv-parks-number")[0].textContent = count_inv;
 	document.getElementsByClassName("inv-parks-number")[1].textContent = count_inv;
+}
+
+function closeInfos() {
+	if (infos.length > 0) {
+		/* detach the info-window from the marker ... undocumented in the API docs */
+		infos[0].set("marker", null);
+		/* and close it */
+		infos[0].close();
+		/* blank the array */
+		infos.length = 0;
+	}
+}
+
+function generateInfoWindow(marker) {
+	var point = locations[marker];
+	var id = point[0];
+	var name = point[1];
+	var num = point[4];
+	var addInfo = point[5];
+	console.log(marker);
+	var content = '<div class="info-cont"><div class="info-img-cont"><img src="parks/' + id + '.jpg"/></div><div class="info-box-details"><div class="info-box-title">' + name + '</div>' + num + ' Parking Spots <br/><div class="info-box-additional">' + addInfo + '</div></div></div>';
+	return content;
 }
 
 function changeLocation(loc) {
