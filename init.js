@@ -14,3 +14,4 @@ var countryRestrict = {
 };
 var infos = [];
 var ib;
+var ibOptions;

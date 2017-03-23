@@ -21,17 +21,17 @@ function initMap() {
 		map.setZoom(5);
 	}
 
-	var ibOptions = {
-		disableAutoPan : false,
+	ibOptions = {
+		disableAutoPan : true,
 		maxWidth : 0,
 		pixelOffset : new google.maps.Size(-125, -42),
 		zIndex : null,
-		alignBottom: true,
+		alignBottom : true,
 		boxStyle : {
 			padding : "0px 0px 0px 0px",
 			width : "250px",
 		},
-		closeBoxURL: "icons/close_infobox.png",
+		closeBoxURL : "icons/close_infobox.png",
 		infoBoxClearance : new google.maps.Size(1, 1),
 		isHidden : false,
 		pane : "floatPane",
@@ -73,22 +73,7 @@ function initMap() {
 		});
 		markers[i] = marker;
 
-		google.maps.event.addListener(marker, 'click', (function(marker) {
-			return function() {
-				map.setZoom(15);
-				map.setCenter({
-					lat : this.position.lat(),
-					lng : this.position.lng()
-				});
-				console.log("hi!");
-				if(ib != null) {
-					ib.close();
-				}
-				ib = new InfoBox(ibOptions);
-				ib.setContent(generateInfoWindow(marker.id));
-				ib.open(map, marker);
-			};
-		})(marker));
+		google.maps.event.addListener(marker, 'click', markerClick);
 	}
 
 	autocomplete = new google.maps.places.Autocomplete(
@@ -212,15 +197,22 @@ function initMap() {
 	document.getElementsByClassName("inv-parks-number")[1].textContent = count_inv;
 }
 
-function closeInfos() {
-	if (infos.length > 0) {
-		/* detach the info-window from the marker ... undocumented in the API docs */
-		infos[0].set("marker", null);
-		/* and close it */
-		infos[0].close();
-		/* blank the array */
-		infos.length = 0;
+function markerClick() {
+	if (map.getZoom() < 15) {
+		map.setZoom(15);
 	}
+	
+    map.setCenter({
+        lat : this.position.lat()+ ( 100 / Math.pow(2, map.getZoom()) ),
+        lng : this.position.lng()
+    });
+
+	if (ib != null) {
+		ib.close();
+	}
+	ib = new InfoBox(ibOptions);
+	ib.setContent(generateInfoWindow(this.id));
+	ib.open(map, this);
 }
 
 function generateInfoWindow(marker) {
@@ -229,12 +221,14 @@ function generateInfoWindow(marker) {
 	var name = point[1];
 	var num = point[4];
 	var addInfo = point[5];
-	console.log(marker);
 	var content = '<div class="info-cont"><div class="info-img-cont"><img src="parks/' + id + '.jpg"/></div><div class="info-box-details"><div class="info-box-title">' + name + '</div>' + num + ' Parking Spots <br/><div class="info-box-additional">' + addInfo + '</div></div></div>';
 	return content;
 }
 
 function changeLocation(loc) {
+	if (ib != null) {
+		ib.close();
+	}
 	for (var i = 0; i < cities.length; i++) {
 		var city = cities[i];
 		if (city[0] == loc) {
@@ -255,6 +249,9 @@ function changeLocationGPS() {
 }
 
 function setLocationGPS(position) {
+	if (ib != null) {
+		ib.close();
+	}
 	map.setCenter({
 		lat : position.coords.latitude,
 		lng : position.coords.longitude
@@ -265,6 +262,10 @@ function setLocationGPS(position) {
 function onPlaceChanged() {
 	var place = autocomplete.getPlace();
 	if (place.geometry) {
+		if (ib != null) {
+			ib.close();
+		}
+
 		map.panTo(place.geometry.location);
 		map.setZoom(17);
 		document.getElementById("clear-phrase").style.display = "none";
@@ -337,7 +338,10 @@ function onPlaceChanged() {
 
 function resetPage() {
 	window.location.hash = "";
-	clearSearchFilter();
+	clearSearchFilter(true);
+	if (ib != null) {
+		ib.close();
+	}
 	map.setCenter({
 		lat : -41.15,
 		lng : 172.65
@@ -354,16 +358,19 @@ function resetPage() {
 function clearSearchFilterButton() {
 	document.getElementById("autocomplete").value = "";
 	document.getElementById("clear-phrase").style.display = "none";
-	clearSearchFilter();
+	clearSearchFilter(true);
 }
 
-function clearSearchFilter() {
+function clearSearchFilter(keepClick) {
 	directionsDisplay.setMap(null);
 	for (var i = 0; i < markers.length; i++) {
 		markers[i].setOpacity(1.0);
 		google.maps.event.clearListeners(markers[i], 'mouseover');
 		google.maps.event.clearListeners(markers[i], 'mouseout');
 		google.maps.event.clearListeners(markers[i], 'click');
+		if (keepClick) {
+			google.maps.event.addListener(markers[i], 'click', markerClick);
+		}
 	}
 	if (dest_marker != null) {
 		dest_marker.setMap(null);
