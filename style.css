@@ -366,6 +366,14 @@ html, body {
 	background-size: cover;
 }
 
+.gisborne {
+	background: linear-gradient(0deg,rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url(cities/gisborne.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 .gps {
 	background: linear-gradient(0deg,rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url(cities/gps.jpg) no-repeat center center;
 	-webkit-background-size: cover;

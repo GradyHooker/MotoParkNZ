@@ -112,6 +112,7 @@ function initMap() {
 	var count_ply = 0;
 	var count_nel = 0;
 	var count_inv = 0;
+	var count_gis = 0;
 
 	for (var i = 0; i < locations.length; i++) {
 		if (locations[i][4] != "??") {
@@ -153,6 +154,9 @@ function initMap() {
 			case "INV":
 				count_inv += parseInt(locations[i][4]);
 				break;
+			case "GIS":
+				count_gis += parseInt(locations[i][4]);
+				break;
 			}
 		}
 	}
@@ -181,8 +185,8 @@ function initMap() {
 	document.getElementsByClassName("nap-parks-number")[0].textContent = count_nap;
 	document.getElementsByClassName("nap-parks-number")[1].textContent = count_nap;
 
-	document.getElementsByClassName("whg-parks-number")[0].textContent = count_whg;
-	document.getElementsByClassName("whg-parks-number")[1].textContent = count_whg;
+	//document.getElementsByClassName("whg-parks-number")[0].textContent = count_whg;
+	//document.getElementsByClassName("whg-parks-number")[1].textContent = count_whg;
 
 	document.getElementsByClassName("tpo-parks-number")[0].textContent = count_tpo;
 	document.getElementsByClassName("tpo-parks-number")[1].textContent = count_tpo;
@@ -195,6 +199,9 @@ function initMap() {
 
 	document.getElementsByClassName("inv-parks-number")[0].textContent = count_inv;
 	document.getElementsByClassName("inv-parks-number")[1].textContent = count_inv;
+	
+	document.getElementsByClassName("gis-parks-number")[0].textContent = count_gis;
+	document.getElementsByClassName("gis-parks-number")[1].textContent = count_gis;
 }
 
 function markerClick() {
