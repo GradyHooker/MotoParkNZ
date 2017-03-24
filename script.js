@@ -24,7 +24,7 @@ function initMap() {
 	ibOptions = {
 		disableAutoPan : true,
 		maxWidth : 0,
-		pixelOffset : new google.maps.Size(-125, -42),
+		pixelOffset : new google.maps.Size(-126, -47),
 		zIndex : null,
 		alignBottom : true,
 		boxStyle : {

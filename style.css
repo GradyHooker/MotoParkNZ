@@ -265,6 +265,32 @@ html, body {
 	border-radius: 5px;
 }
 
+.infoBox:after {
+    content:'';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-top: solid 10px #dedede;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+}
+
+.infoBox:before {
+    content:'';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -11px;
+    width: 0;
+    height: 0;
+    border-top: 11px solid black;
+    border-left: solid 11px transparent;
+    border-right: solid 11px transparent;
+}
+
 .infoBox > img {
 	position: absolute !important;
 	right: 0px;	
