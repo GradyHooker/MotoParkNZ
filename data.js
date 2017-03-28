@@ -50,6 +50,8 @@ var locations = [
 	["HAM-32",	"The Base (Te Awa #2)",				-37.747417, 	175.233237,		4,		"Inside The Base (Outside Gloria Jean's)", true, "thebase"],
 
 	["WHG-01",	"16 Rathbone St",					-35.724273, 	174.321299,		6,		""],
+	["WHG-02",	"Forum North",						-35.725150, 	174.318272,		4,		""],
+	["WHG-03",	"Carruth St",						-35.725908, 	174.325463,		4,		""],
 	
 	["TPO-01",	"5 Paora Hapi St",					-38.684405, 	176.070881,		3,		""],
 	["TPO-02",	"67 Paora Hapi St",					-38.685200, 	176.074567,		2,		""],
