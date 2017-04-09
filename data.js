@@ -1,6 +1,6 @@
 var cities = [
 	//CityName		CityCode	Latitude		Longitude		ZoomLevel
-	["Hamilton",	"HAM",		-37.786876, 	175.279102,		15],
+	["Hamilton",	"HAM",		-37.769622, 	175.273499,		14],
 	["Auckland",	"AUK",		-36.848440, 	174.762183,		15],
 	["Whangarei",	"WHG",		-35.725132, 	174.323749,		16],
 	["Taupo",		"TPO",		-38.685808, 	176.070151,		16],
@@ -13,6 +13,7 @@ var cities = [
 	["Nelson",		"NEL",		-41.272537, 	173.284563,		16],
 	["Invercargill","INV",		-46.411544, 	168.349681,		16],
 	["Gisborne",	"GIS",		-38.666063, 	178.024371,		16],
+	["Timaru",		"TIM",		-44.395610, 	171.251667,		16],
 ];
 var locations = [
 	//code		StreetAddress			Latitude		Longitude		#		AdditionalInfo
@@ -48,6 +49,7 @@ var locations = [
 	["HAM-30",	"University of Waikato (I Block)",	-37.788749,		175.316814,		12,		"University of Waikato Students/Visitors Only", true, "waikatouni"],
 	["HAM-31",	"University of Waikato (Gate 8)",	-37.788682, 	175.318423,		7,		"University of Waikato Students/Visitors Only", true, "waikatouni"],
 	["HAM-32",	"The Base (Te Awa #2)",				-37.747417, 	175.233237,		4,		"Inside The Base (Outside Gloria Jean's)", true, "thebase"],
+	["HAM-33",	"7 Cook St",						-37.793657, 	175.293798,		4,		""],
 
 	["WHG-01",	"16 Rathbone St",					-35.724273, 	174.321299,		6,		""],
 	["WHG-02",	"Forum North",						-35.725150, 	174.318272,		4,		""],
@@ -248,5 +250,10 @@ var locations = [
 	["GIS-04",	"93 Grey St",						-38.664658, 	178.023929,		8,		""],
 	["GIS-05",	"136B Gladstone Rd",				-38.665802, 	178.024973,		4,		""],
 	["GIS-06",	"64 Lowe St",						-38.667362, 	178.026865,		6,		""],
+	
+	["TIM-01",	"50 The Bay Hill",					-44.391909,		171.247892,		4,		""],
+	["TIM-02",	"48 Bank St",						-44.396205,		171.249990,		2,		""],
+	["TIM-03",	"8 Arthur St",						-44.398280, 	171.251636,		4,		""],
+	["TIM-04",	"68 Stafford St",					-44.399252, 	171.255892,		4,		""],
 
   ];

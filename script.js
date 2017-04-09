@@ -243,7 +243,7 @@ function changeLocation(loc) {
 				lat : city[2],
 				lng : city[3]
 			});
-			map.setZoom(15);
+			map.setZoom(city[4]);
 			window.location.hash = '#' + loc;
 		}
 	}
