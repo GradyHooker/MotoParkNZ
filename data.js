@@ -1,19 +1,19 @@
 var cities = [
-	//CityName		CityCode	Latitude		Longitude		ZoomLevel
+	//CityName		CityCode	Latitude		Longitude		ZoomLevel (MAX 15)
 	["Hamilton",	"HAM",		-37.769622, 	175.273499,		14],
 	["Auckland",	"AUK",		-36.848440, 	174.762183,		15],
-	["Whangarei",	"WHG",		-35.725132, 	174.323749,		16],
-	["Taupo",		"TPO",		-38.685808, 	176.070151,		16],
-	["Napier",		"NAP",		-39.492549, 	176.916680,		16],
-	["Hastings",	"HAS",		-39.642048, 	176.843338,		16],
+	["Whangarei",	"WHG",		-35.725132, 	174.323749,		15],
+	["Taupo",		"TPO",		-38.685808, 	176.070151,		15],
+	["Napier",		"NAP",		-39.492549, 	176.916680,		15],
+	["Hastings",	"HAS",		-39.642048, 	176.843338,		15],
 	["Wellington",	"WLG",		-41.284681, 	174.779547,		15],
 	["Christchurch","CHC",		-43.531983, 	172.636278,		15],
 	["Dunedin",		"DND",		-45.874160,		170.507060,		15],
-	["New Plymouth","PLY",		-39.057316,		174.074324,		16],
-	["Nelson",		"NEL",		-41.272537, 	173.284563,		16],
-	["Invercargill","INV",		-46.411544, 	168.349681,		16],
-	["Gisborne",	"GIS",		-38.666063, 	178.024371,		16],
-	["Timaru",		"TIM",		-44.395610, 	171.251667,		16],
+	["New Plymouth","PLY",		-39.057316,		174.074324,		15],
+	["Nelson",		"NEL",		-41.272537, 	173.284563,		15],
+	["Invercargill","INV",		-46.411544, 	168.349681,		15],
+	["Gisborne",	"GIS",		-38.666063, 	178.024371,		15],
+	["Timaru",		"TIM",		-44.395610, 	171.251667,		15],
 ];
 var locations = [
 	//code		StreetAddress			Latitude		Longitude		#		AdditionalInfo
